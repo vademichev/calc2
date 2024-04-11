@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin:0px;
+                padding:0px;
+                box-sizing: border-box;
+            }
+            .button
+            {
+                display: flex; /* Флекс-модель*/
+                height: 100px; /*высота ширина*/
+                width: 100px;
+                border-radius: 50px; /* Скругление углов*/
+                background: radial-gradient(circle at 65% 15%, #5362c1, #25006a);              
+                /*background-color: blue; /*цвет фона*/
+                color: white;/*цвет текста*/
+                justify-content: center; /*выравнивание флекс*/
+                align-items: center;/*выравнивание по вертикали*/
+                text-decoration: none; /*отключить стиль по умолчанию для а*/
+                box-shadow: 5px 5px 5px black;
+                text-shadow: 0px 0px 10px white;
+                animation: activeButton 1s  linear 0s infinite;
+            }
+            .button:hover
+            {
+                animation-play-state: paused;
+                background: radial-gradient(circle at 65% 15%, #c1539e, #25006a);              
+            }
+            .button:active
+            {
+                animation: activeButton 0.3s  linear 0s infinite;
+            }
+            @keyframes activeButton {
+                from {
+                    transform: scale(1.0);
+                }
+                50% {
+                    transform: scale(1.05);
+                    box-shadow: 5px 5px 8px black;
+                }
+                to {
+                    transform: scale(0.95)
+                }
+            }
+            .rocket{
+                top: 0px;
+                left: 0px;
+                width: 100px;
+                height: 100px;
+                background-image: url(rocket.gif);
+                background-size: contain;
+             /*   animation: rocketfly 5s  linear 0s 1;*/
+                position: sticky;
+            }
+            @keyframes rocketfly
+            {
+                from{
+                    transform: scale(0.5) translateY(100px) ;
+                }
+                30%{
+                    transform: rotate(15deg) scale(0.8) translateY(-100px) ;
+      
+                }
+                70%{
+                    transform: rotate(15deg) scale(1) translateY(-400px) translateX(100px);
+                }
+                to{
+                    transform: rotate(15deg) scale(1) translateY(-800px) translateX(300px);
+                }
+            }
+            .menu
+            {
+                display: flex;
+                list-style-type: none
+            }
+            .menu  li
+            {
+                background-color: #25006a;
+                color: antiquewhite;
+                border-style: solid;
+                border-color: #c1539e;
+                margin:10px;
+                padding:10px;
+                position: relative;
+                transition-property: all;
+                transition: 0.5s;
+            }
+            .menu > li:hover ul
+            {
+                display: flex;
+            }
+            .submenu
+            {
+                left:0px;
+                top:40px;
+                display: none;
+                list-style-type: none;
+                position: absolute;
+                flex-direction: column;
+                border: none;
+                z-index: 10;
+            }
+            .submenu li{
+                margin:0px;
+            }
+            .menu li:hover
+            {
+                background-color: chartreuse;
+            }
+            .menu1
+            {
+                transform: rotate(10deg);
+            }
+        </style>
+        <script>
+            function buttonclick()
+            {
+                let menu = document.querySelector(".menu");
+                menu.classList.add("menu1");
+            }
+        </script>
+    </head>
+    <body>
+        <ul class="menu">
+            <li>Файл
+                <ul class="submenu">
+                    <li>Открыть</li>
+                    <li>Сохранить</li>
+                    <li>Новый</li>
+                </ul>
+            </li>
+            <li>Редактировать
+                <ul class="submenu">
+                    <li>Вставить</li>
+                    <li>Удалить</li>
+                    <li>Заменить</li>
+                </ul>
+            </li>
+            <li>Просмотр</li>
+            <li>Справка</li>
+        </ul>
+        <h1> Здесь будут кнопки</h1>
+        <a class="button" href="#" onclick="buttonclick()">Это кнопка</a>
+        <div class="rocket"></div>
+       
+    
+    
+    </body>
+</html>
